@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-dark bg-dark">
+        <h1 style="display: inline-block; margin-left: 10%; color:white;">Hello <span class="text-success">{{user.first_name}}</span>! Read about this trip!</h1>
+        <a class="text-success"style="margin-left:20%" href="/dashboard">Dashboard</a>
+        <a class="text-success"style="margin-left:20%" href="/">Logout</a>
+    </div>
+    <div style="padding: 10px" class='container'>
+        {% for trip in trip %}
+        <h3>{{trip.destination}}</h3>
+        <div style="border: 1px solid black; padding: 10px">
+            <p>Start Date: {{trip.start_date}}</p>
+            <p>End Date: {{trip.end_date}}</p>
+            <p>Created On: {{trip.created_at}}</p>
+            <p>Last Updated: {{trip.updated_at}}</p>
+            <p>Plan: {{trip.plan}}</p>
+            <p>Created by: {{user.first_name}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

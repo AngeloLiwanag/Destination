@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-dark bg-dark">
+        <h1 style="display: inline-block; margin-left: 10%; color:white;">Hello <span class="text-success">{{user.first_name}}</span>!</h1>
+        <a style='display: inline-block; margin-left: 50%' href="/" class="text-success">Logout</a>
+        <a style='display: inline-block; margin-left: 10%' href="/trips/new" class="btn btn-success">Create a new trip!</a>
+    </div>
+    <div class='container' style="padding: 40px 0px;">
+        <p>Your Trips:</p>
+        <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Plan</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for one_trip in trips %}
+                  <tr>
+                   <th scope="row"><a class="text-success" href="/trips/{{one_trip.id}}">{{one_trip.destination}}</a></th>
+                    <td>{{one_trip.start_date}} </td>
+                    <td>{{one_trip.end_date}}</td>
+                    <td>{{one_trip.plan}}</td>
+                    <td>
+                    <div style="display:inline-block;">
+                        <a class="text-success" href="/destroy/{{one_trip.id}}"> Remove </a>
+                        <a class="text-success" href="/trips/edit/{{one_trip.id}}">Edit</a>
+                    </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+    </div>
+</body>
+</html>

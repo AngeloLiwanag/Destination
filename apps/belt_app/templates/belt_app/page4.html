@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="navbar navbar-dark bg-dark">
+        <h1 style="display: inline-block; color:white;">Hello <span class="text-success">{{user.first_name}}</span>! Edit a trip!</h1>
+        <a style="margin-left:50%" class="text-success" href="/">Logout</a>
+    </div>
+    <div class='container' style="padding:40px 0px;">
+        {% if messages %} 
+        <ul class="messages">
+            {% for message in messages %}
+            <li style="color:red;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/update/{{trip_id}}" method="post">
+            {% csrf_token %}
+            <p>Destination: <input type="text" name="destination" value="{{trips.destination}}"></p>
+            <p>Start Date: <input type="date" name="start_date" value='{{trips.start_date}}'></p>
+            <p>End Date: <input type="date" name="end_date" value='{{trips.end_date}}'></p>
+            <p>Plan: <input type="text" name="plan" value='{{trips.plan}}'></p>
+            <div>
+                <a class="btn btn-outline-success" href="/dashboard">Cancel</a>
+                <button  class="btn btn-outline-success" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
